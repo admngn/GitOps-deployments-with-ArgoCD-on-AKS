@@ -7,19 +7,19 @@ variable "resource_group_name" {
 variable "location" {
   description = "Région Azure"
   type        = string
-  default     = "westeurope"
+  default     = "francecentral"
 }
 
 variable "cluster_name" {
   description = "Nom du cluster AKS"
   type        = string
-  default     = "aks-westeurope-prod-01"
+  default     = "aks-francecentral-prod-01"
 }
 
 variable "node_count" {
   description = "Nombre de nodes initial"
   type        = number
-  default     = 1  
+  default     = 1
 }
 
 variable "vm_size" {
@@ -28,11 +28,6 @@ variable "vm_size" {
   default     = "Standard_B2s"
 }
 
-variable "kubernetes_version" {
-  description = "Version de Kubernetes"
-  type        = string
-  default     = "1.29"
-}
 
 variable "environment" {
   description = "Environnement"
