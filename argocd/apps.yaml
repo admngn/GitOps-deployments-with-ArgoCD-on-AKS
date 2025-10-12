@@ -1,0 +1,27 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-applicationsets
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/admngn/GitOps-deployments-with-ArgoCD-on-AKS
+    targetRevision: main
+    path: argocd/applicationsets
+    directory:
+      recurse: true  # Scan tous les sous-dossiers 
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd 
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+

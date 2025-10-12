@@ -1,20 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: all-apps
+  name: personal-apps
   namespace: argocd
+  labels:
+    topic: personal
 spec:
   generators:
     - git:
         repoURL: https://github.com/admngn/GitOps-deployments-with-ArgoCD-on-AKS
         revision: main
         directories:
-          - path: manifests/*
+          - path: manifests/personal/*
   
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: 'personal-{{path.basename}}'
       namespace: argocd
+      labels:
+        topic: personal
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     
@@ -28,7 +32,7 @@ spec:
       
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path.basename}}'
+        namespace: 'personal-{{path.basename}}'
       
       syncPolicy:
         automated:
