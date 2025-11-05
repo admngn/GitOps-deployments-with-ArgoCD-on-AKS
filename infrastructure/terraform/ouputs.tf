@@ -1,5 +1,5 @@
 output "resource_group_name" {
-  description = "Nom du Resource Group"
+  description = "Resource Group"
   value       = azurerm_resource_group.rg.name
 }
 
@@ -25,6 +25,6 @@ output "cluster_fqdn" {
 }
 
 output "configure_kubectl" {
-  description = "Commande pour configurer kubectl"
+  description = "Configuration du kubectl"
   value       = "az aks get-credentials --resource-group ${azurerm_resource_group.rg.name} --name ${azurerm_kubernetes_cluster.aks.name}"
 }
