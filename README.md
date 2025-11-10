@@ -39,10 +39,12 @@ cd GitOps-deployments-with-ArgoCD-on-AKS
 GitOps-deployments-with-ArgoCD-on-AKS/
 ├── README.md
 ├── argocd/
-│   ├── install/                 # Manifests d'installation Argo CD (optionnel si tu appliques tout le dossier)
+│   ├── install/                  # (optionnel) Déclaration Argo CD Application
+│   │   └── ingress.yaml
+│   │   └── install.yaml       
 │   ├── apps/
-│   │   └── game-2048.yaml       # (optionnel) Déclaration Argo CD Application
-│   └── <autres-yaml>.yaml       # Manifests Argo CD (server, rbac, svc, etc.)
+│   │   └── apps.yaml            # Manifests Argo CD (server, rbac, svc, etc.)     
+│   └── <autres-yaml>.yaml
 ├── infrastructure/
 │   └── terraform/
 │       ├── main.tf
