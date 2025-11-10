@@ -96,15 +96,22 @@ GitOps-deployments-with-ArgoCD-on-AKS/
   ```bash
   kubectl create namespace argocd --dry-run=client -o yaml | kubectl apply -f -
   ```
-2. Installer Argo CD
+2. Ajoute le repo Helm ArgoCD
   ```bash
-  kubectl apply -n argocd -f argocd/
+  helm repo add argo https://argoproj.github.io/argo-helm
+  helm repo update
   ```
-3. Vérifier le déploiement
+3. Installe ArgoCD via Helm
+  ```bash
+  helm install argocd argo/argo-cd \
+    --namespace argocd \
+    --create-namespace
+  ```
+4. Vérifier le déploiement
   ```bash
   kubectl get pods -n argocd
   ```
-4. Récupérer le mot de passe admin et accéder à l’interface
+5. Récupérer le mot de passe admin et accéder à l’interface
   ```bash
   kubectl -n argocd get secret argocd-initial-admin-secret \
   -o jsonpath="{.data.password}" | base64 -d; echo
