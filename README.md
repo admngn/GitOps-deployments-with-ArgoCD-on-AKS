@@ -30,6 +30,7 @@ L’ensemble du flux GitOps repose sur Argo CD, qui surveille ce dépôt et sync
 ## 🧰 Cloner le dépôt
 
 git clone https://github.com/admngn/GitOps-deployments-with-ArgoCD-on-AKS.git
+
 cd GitOps-deployments-with-ArgoCD-on-AKS
 
 ---
